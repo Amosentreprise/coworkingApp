@@ -5,7 +5,11 @@
       :name="profil.name"
       :image="profil.source"
       :options="options"
-    ></layoutComponent>
+      :user="profil.lien"
+     
+    >
+      <router-view/>
+    </layoutComponent>
   </div>
 </template>
 <script>
@@ -20,12 +24,14 @@ export default {
       profil: {
         name: "Someone",
         source: profileImage,
+        lien: "/profile",
       },
       options: [
         {
           icons: "bx bxs-bell",
           optionName: "Mes notifications",
           lien: "/notifications",
+        
         },
         {
           icons: "bx bxs-offer",
@@ -45,6 +51,7 @@ export default {
       ],
     };
   },
+ 
 };
 </script>
 <style></style>

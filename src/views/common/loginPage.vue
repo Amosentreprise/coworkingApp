@@ -1,30 +1,67 @@
 <template>
   <div class="login">
-    <div class="page" id="page">
-      Page de connexion</div>
-    <div class="error">
-      <p>error</p>
-    </div>
-    <div class="loginField">
-      <champComponent type="text" message="Username"></champComponent>
-      <champComponent type="password" message="Password"></champComponent>
-    </div>
-    <div class="btn">
-      <router-link to="/404">
-        <buttonComponent color msg="Connexion" id="button"></buttonComponent
-      ></router-link>
+    <div class="page" id="page">Page de connexion</div>
+    <form class="loginField">
+      <input
+        v-model.trim="$v.username.$model"
+        type="text"
+        placeholder="Username"
+        :class="{ error: $v.username.$error, succes: !$v.username.$error }"
+      />
+      <input
+        v-model.trim="$v.password.$model"
+        type="password"
+        placeholder="Password"
+        :class="{ error: $v.password.$error, succes: !$v.password.$error }"
+      />
+      <div class="btn">
+        <router-link to="" v-if="this.$v.$invalid">
+          <buttonComponent color msg="Connexion" id="button"></buttonComponent
+        ></router-link>
+        <router-link to="/boardUser" v-else-if="!this.$v.$invalid">
+          <buttonComponent color msg="Connexion" id="button"></buttonComponent
+        ></router-link>
+        <router-link to="/boardAdmin" v-else-if="appelBord">
+          <buttonComponent color msg="Connexion" id="button"></buttonComponent
+        ></router-link>
+        <buttonComponent color msg="Erreur" id="button" v-else></buttonComponent>
 
-      <span>Mot de passe oublié ?</span>
-    </div>
+        <span>Mot de passe oublié ?</span>
+      </div>
+    </form>
   </div>
 </template>
 <script>
 import buttonComponent from "../../components/buttonComponent.vue";
-import champComponent from "../../components/champComponent.vue";
+import { required } from "vuelidate/lib/validators";
 export default {
   components: {
     buttonComponent,
-    champComponent,
+    // champComponent,
+  },
+  data() {
+    return {
+      username: "",
+      password: "",
+      interface: true,
+    };
+  },
+  validations: {
+    username: {
+      required,
+    },
+    password: {
+      required,
+    },
+  },
+  computed: {
+    appelBord() {
+      if (this.username === "Admin" && this.password === "Admini") {
+        return this.interface === true;
+      } else {
+        return this.interface === false;
+      }
+    },
   },
 };
 </script>
@@ -43,8 +80,6 @@ export default {
 }
 #button {
   width: 465px;
-  margin-left: 25px;
-  margin-right: 25px;
   text-align: center;
 }
 span {
@@ -58,10 +93,20 @@ span {
   cursor: pointer;
 }
 #page {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 #page::before,
 #page::after {
   margin-top: 80px;
+}
+.loginField {
+  display: flex;
+  flex-direction: column;
+}
+.error {
+  border: 2px solid rgb(167, 13, 13);
+}
+.succes {
+  border: 2px solid #2072c3;
 }
 </style>

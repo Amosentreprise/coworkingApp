@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input :v-model="model" :type="type"  :placeholder="message" />
+    <input
+      :v-model="model"
+      :type="type"
+      :placeholder="message"
+     
+    />
   </div>
 </template>
 <script>
@@ -10,7 +15,6 @@ export default {
     type: String,
     message: String,
     model: String,
-    
   },
 };
 </script>

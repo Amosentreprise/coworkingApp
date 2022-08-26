@@ -1,10 +1,12 @@
 <template>
   <div class="layout">
     <div id="left" :class="{ blue: color, rose: !color }">
-      <div class="profil">
-        <img :src="image" alt="" />
-        <span class="name">{{ name }}</span>
-      </div>
+      <router-link :to="user">
+        <div class="profil">
+          <img :src="image" alt="" />
+          <span class="name">{{ name }}</span>
+        </div>
+      </router-link>
       <div v-for="option in options" :key="option">
         <router-link :to="option.lien">
           <div class="options">
@@ -12,6 +14,7 @@
             <small class="optionName">{{ option.optionName }}</small>
           </div>
         </router-link>
+        
       </div>
       <router-link to="/login">
         <div class="logout">
@@ -20,8 +23,8 @@
         </div>
       </router-link>
     </div>
-    <div class="right">
-      <router-view />
+    <div id="right">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -33,10 +36,12 @@ export default {
     name: String,
     image: String,
     options: Array,
+    user: String,
+    valid: String,
   },
 };
 </script>
-<style>
+<style scoped>
 .blue {
   background-color: #2072c3;
 }
@@ -54,6 +59,13 @@ export default {
   left: 0;
   bottom: 0;
   width: 25%;
+  height: 100%;
+}
+#right {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 75%;
   height: 100%;
 }
 .profil img {
@@ -74,10 +86,13 @@ export default {
   padding-bottom: 10px;
 }
 .options {
-  border-top: 2px solid #fff;
+  /*border-top: 2px solid #fff;*/
   cursor: pointer;
   margin: auto;
   padding: 0px 40px;
+}
+.options:hover {
+  background-color: #41b883;
 }
 .options .optionName,
 .textLogout {
@@ -85,10 +100,13 @@ export default {
   color: #fff;
   font-size: 20px;
 }
+
 i {
   font-size: 30px;
   padding: 10px;
+  color: #fff;
 }
+
 .logout {
   position: absolute;
   bottom: 10px;

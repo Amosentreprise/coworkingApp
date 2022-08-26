@@ -29,9 +29,15 @@ const routes = [
     component: () => import("../views/users/boardUser.vue"),
     children: [
       {
-        path: "/boardUser",
+        path: "",
         name: "Offres",
         component: () => import("../views/users/bordUserPage/mesOffres.vue"),
+      },
+      {
+        path: "/profile",
+        name: "profile",
+        component: () =>
+          import("../views/users/bordUserPage/profilePage.vue"),
       },
       {
         path: "/notifications",
@@ -57,7 +63,7 @@ const routes = [
     component: () => import("../views/admin/boardAdmin.vue"),
   },
   {
-    path: "/404",
+    path: "*",
     name: "404",
     component: () => import("../views/common/PageNotFound.vue"),
   },
