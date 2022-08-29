@@ -1,21 +1,18 @@
 <template>
   <div class="board">
-    <layoutComponent
-      color
-      :name="profil.name"
-      :image="profil.source"
-      :options="options"
-      :user="profil.lien"
-     
-    >
-      <router-view/>
+    <layoutComponent color>
+      <template v-slot:options> </template>
+
+      <template v-slot:sideBare>
+        <router-view />
+      </template>
     </layoutComponent>
   </div>
 </template>
 <script>
 import layoutComponent from "../../components/layoutComponent.vue";
 import profileImage from "@/assets/user.png";
-export default {
+export default { 
   components: {
     layoutComponent,
   },
@@ -31,7 +28,6 @@ export default {
           icons: "bx bxs-bell",
           optionName: "Mes notifications",
           lien: "/notifications",
-        
         },
         {
           icons: "bx bxs-offer",
@@ -51,7 +47,6 @@ export default {
       ],
     };
   },
- 
 };
 </script>
 <style></style>
