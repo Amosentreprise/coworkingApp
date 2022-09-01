@@ -1,9 +1,40 @@
 <template>
   <div class="board">
-    <layoutComponent color>
-      <template v-slot:options> </template>
-
-      <template v-slot:sideBare>
+    <layoutComponent
+      color
+      :name="profil.name"
+      :image="profil.source"
+      :user="profil.lien"
+    >
+      <template v-slot:options>
+        <nav class="options">
+          <router-link to="/notifications">
+            <div class="option" >
+              <i class="bx bxs-bell"></i>
+              <small class="optionName">Mes notifications</small>
+            </div>
+          </router-link>
+          <router-link to="/boardUser">
+            <div class="option">
+              <i class="bx bxs-offer"></i>
+              <small class="optionName">Voir les offres</small>
+            </div>
+          </router-link>
+          <router-link to="/afilies">
+            <div class="option">
+              <i class="bx bxs-group"></i>
+              <small class="optionName">Mes affiliés</small>
+            </div>
+          </router-link>
+          <router-link to="/Lien">
+            <div class="option">
+              <i class="bx bx-link"></i>
+              <small class="optionName">Generer un lien</small>
+            </div>
+          </router-link>
+        </nav>
+      </template>
+      <template v-slot:right> 
         <router-view />
       </template>
     </layoutComponent>
@@ -11,10 +42,13 @@
 </template>
 <script>
 import layoutComponent from "../../components/layoutComponent.vue";
+
+
 import profileImage from "@/assets/user.png";
-export default { 
+export default {
   components: {
     layoutComponent,
+  
   },
   data() {
     return {
@@ -23,30 +57,32 @@ export default {
         source: profileImage,
         lien: "/profile",
       },
-      options: [
-        {
-          icons: "bx bxs-bell",
-          optionName: "Mes notifications",
-          lien: "/notifications",
-        },
-        {
-          icons: "bx bxs-offer",
-          optionName: "Voir les offres",
-          lien: "/boardUser",
-        },
-        {
-          icons: "bx bxs-group",
-          optionName: "Voir mes affiliés",
-          lien: "/afilies",
-        },
-        {
-          icons: "bx bx-link",
-          optionName: "Generer un lien",
-          lien: "/Lien",
-        },
-      ],
     };
   },
 };
 </script>
-<style></style>
+<style scoped>
+.option .optionName {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+i {
+  font-size: 30px;
+  padding: 10px;
+  color: #fff;
+}
+
+.option {
+  cursor: pointer;
+  margin: auto;
+  padding: 0px 40px;
+}
+.option:hover {
+  background-color: #41b883;
+}
+.router-link-active {
+  background-color: #41b883;
+}
+</style>

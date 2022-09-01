@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import welcomePage from '../views/common/welcomePage.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import welcomePage from "../views/common/welcomePage.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -29,15 +29,14 @@ const routes = [
     component: () => import("../views/users/boardUser.vue"),
     children: [
       {
-        path: "",
+        path: "/boardUser",
         name: "Offres",
         component: () => import("../views/users/bordUserPage/mesOffres.vue"),
       },
       {
         path: "/profile",
         name: "profile",
-        component: () =>
-          import("../views/users/bordUserPage/profilePage.vue"),
+        component: () => import("../views/users/bordUserPage/profilePage.vue"),
       },
       {
         path: "/notifications",
@@ -70,9 +69,9 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

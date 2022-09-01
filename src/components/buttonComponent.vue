@@ -1,6 +1,6 @@
 <template>
   <div class="button">
-    <button :class="{ btn1: color, btn2: !color }" :id="id" v-on:click="eventClick" >
+    <button :class="{ btn1: color, btn2: !color }" :id="id">
       {{ msg }}
     </button>
   </div>
@@ -13,7 +13,6 @@ export default {
     msg: String,
     color: Boolean,
     id: String,
-    eventClick: String,
     
   },
 };
