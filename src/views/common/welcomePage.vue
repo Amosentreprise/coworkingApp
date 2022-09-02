@@ -11,10 +11,14 @@
     </div>
     <div class="button">
       <router-link to="/signUp">
-        <buttonComponent color msg="M'inscrire ?"></buttonComponent>
+        <buttonComponent
+          color
+          msg="M'inscrire ?"
+          id="colorbtn1"
+        ></buttonComponent>
       </router-link>
       <router-link to="/login"
-        ><buttonComponent msg="Me Connecter ?"></buttonComponent
+        ><buttonComponent msg="Me Connecter ?" id="colorbtn2"></buttonComponent
       ></router-link>
       <router-view />
     </div>
@@ -41,23 +45,39 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #ecf0f3;
 }
 .image {
   margin-bottom: 30px;
 }
 .text {
   width: 500px;
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 50px;
 }
 
 button {
-  border: none;
   padding: 10px 20px;
   font-size: 15px;
   color: #f1f8f4;
   margin-right: 20px;
+  transition: 0.3s;
+}
+#colorbtn2,
+#colorbtn1:hover {
+  background-color: transparent;
+  color: #2072c3;
+  border: 1px solid #2072c3;
+  border-radius: 5px;
+  font-weight: 700;
+}
+#colorbtn2:hover,
+#colorbtn1 {
+  background-color: #2072c3;
+  color: #f1f8f4;
+  font-weight: 400;
+  border: 1px solid #2072c3;
+  border-radius: 5px;
 }
 .button {
   display: flex;

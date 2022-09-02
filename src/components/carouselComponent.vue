@@ -54,6 +54,7 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .carousel-btn {
   position: absolute;
@@ -77,6 +78,4 @@ export default {
   height: 63px;
   background-color: #c5c5c5;
 }
-
-
 </style>

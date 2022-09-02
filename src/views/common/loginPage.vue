@@ -16,7 +16,7 @@
       />
       <div class="btn">
         <router-link to="" v-if="this.$v.$invalid">
-          <buttonComponent color msg="Connexion" id="button"></buttonComponent
+          <buttonComponent color msg="Connexion" id="button" ></buttonComponent
         ></router-link>
         <router-link to="/boardUser" v-else-if="!this.$v.$invalid">
           <buttonComponent color msg="Connexion" id="button"></buttonComponent
@@ -24,7 +24,6 @@
         <router-link to="/boardAdmin" v-else-if="appelBord">
           <buttonComponent color msg="Connexion" id="button"></buttonComponent
         ></router-link>
-        <buttonComponent color msg="Erreur" id="button" v-else></buttonComponent>
 
         <span>Mot de passe oublié ?</span>
       </div>
@@ -77,6 +76,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #ecf0f3;
 }
 #button {
   width: 465px;
@@ -84,7 +84,7 @@ export default {
 }
 span {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   font-style: italic;

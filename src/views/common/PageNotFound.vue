@@ -30,6 +30,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ecf0f3;
 }
 .imagePart img {
   width: 100px;

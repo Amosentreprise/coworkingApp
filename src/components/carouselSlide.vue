@@ -33,6 +33,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #fff;
+  
 }
 .slide-right-enter-active {
   animation: slideInright 0.5s;

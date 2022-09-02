@@ -26,7 +26,6 @@
         type="email"
         placeholder="Email"
         :class="{ error: $v.email.$error, succes: !$v.email.$error }"
-        
       />
       <div class="error-message">
         <small v-if="!$v.email.required"></small>
@@ -69,7 +68,11 @@
         <small v-if="!$v.passwordAgain.sameAsPassword"></small>
       </div>
       <router-link to="/signUp" v-if="this.$v.$invalid">
-        <buttonComponent color msg="Inscription" id="button1" :eventClick ="click"></buttonComponent>
+        <buttonComponent
+          color
+          msg="Inscription"
+          id="button1"
+        ></buttonComponent>
       </router-link>
       <router-link to="/boardUser" v-else>
         <buttonComponent color msg="Inscription" id="button1"></buttonComponent>
@@ -128,9 +131,7 @@ export default {
     },
   },
   methods: {
-    click() {
-      alert("veuillez remplir tous les champs")
-    }
+
   },
 };
 </script>
@@ -146,6 +147,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ecf0f3;
 }
 .imagee .userIcon {
   width: 100px;
@@ -165,7 +167,7 @@ export default {
 }
 
 .error-message small {
-  font-size: 16px;
+  font-size: 10px;
   font-style: italic;
   font-weight: 700;
   color: rgb(168, 18, 18);

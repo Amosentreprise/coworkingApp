@@ -58,6 +58,7 @@ export default {
   bottom: 0;
   width: 75%;
   height: 100%;
+  background-color: #ecf0f3;
 }
 .profil img {
   width: 100px;
@@ -85,7 +86,7 @@ export default {
 }
 
 i {
-  font-size: 30px;
+  font-size: 1.8rem;
   padding: 10px;
   color: #fff;
 }
